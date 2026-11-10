@@ -6,6 +6,7 @@ data "aws_ssm_parameter" "al2023" {
 resource "aws_instance" "app" {
   ami                         = data.aws_ssm_parameter.al2023.value
   instance_type               = "t3.micro"
+  ebs_optimized               = true
   subnet_id                   = aws_subnet.private[0].id
   vpc_security_group_ids      = [aws_security_group.app.id]
   iam_instance_profile        = aws_iam_instance_profile.app.name
