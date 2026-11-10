@@ -9,3 +9,6 @@ output "public_subnet_ids" {
 output "private_subnet_ids" {
   value = aws_subnet.private[*].id
 }
+output "alb_dns_name" {
+  value = aws_lb.app.dns_name
+}
